@@ -1,0 +1,7 @@
+[ConsumerTokens]
+CONSUMER_KEY = ""
+CONSUMER_SECRET = ""
+
+[AccessTokens]
+ACCESS_TOKEN = ""
+ACCESS_TOKEN_SECRET = ""
