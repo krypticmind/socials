@@ -3,15 +3,19 @@
 
 __author__ = 'Kryptic Mind'
 
+from ConfigParser import ConfigParser
 from tweepy import OAuthHandler
 from tweepy import Stream
 from tweepy.streaming import StreamListener
 
-CONSUMER_KEY = ""
-CONSUMER_SECRET = ""
 
-ACCESS_TOKEN = ""
-ACCESS_TOKEN_SECRET = ""
+config = ConfigParser()
+config.read('config.ini')
+
+CONSUMER_KEY = config.get("ConsumerTokens", "CONSUMER_KEY")
+CONSUMER_SECRET = config.get("ConsumerTokens", "CONSUMER_SECRET")
+ACCESS_TOKEN = config.get("AccessTokens", "ACCESS_TOKEN")
+ACCESS_TOKEN_SECRET = config.get("AccessTokens", "ACCESS_TOKEN_SECRET")
 
 class Listener(StreamListener):
     def on_data(self, data):
