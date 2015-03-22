@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 __author__ = 'Kryptic Mind'
 
@@ -25,4 +26,4 @@ if __name__ == '__main__':
     auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 
     twitterStream = Stream(auth, Listener())
-    twitterStream.filter(track=["music"])
+    twitterStream.filter(track=[u"music", u"музыка"])
