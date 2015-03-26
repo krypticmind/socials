@@ -14,7 +14,7 @@ class TwitterBot():
         self.pidfile_timeout = 5
 
     def run(self):
-        #some logic here
+        pass
 
 app = TwitterBot()
 daemon_runner = daemon.runner.DaemonRunner(app)
