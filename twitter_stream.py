@@ -7,7 +7,7 @@ from ConfigParser import ConfigParser
 from tweepy import OAuthHandler
 from tweepy import Stream
 from tweepy.streaming import StreamListener
-
+import daemon
 
 config = ConfigParser()
 config.read('config.ini')
@@ -26,8 +26,5 @@ class Listener(StreamListener):
         print status_code
 
 if __name__ == '__main__':
-    auth = OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-    auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
-
-    twitterStream = Stream(auth, Listener())
-    twitterStream.filter(track=[u"music", u"музыка"])
+    bot = daemon.TwitterBot(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+    bot.stream()
