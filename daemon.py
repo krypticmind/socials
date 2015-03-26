@@ -8,7 +8,6 @@ from tweepy.streaming import StreamListener
 
 
 class TwitterBot():
-
     def __init__(self, consumer_key=None, consumer_secret=None, access_token=None, access_token_secret=None):
         self.auth = OAuthHandler(consumer_key, consumer_secret)
         self.auth.set_access_token(access_token, access_token_secret)
