@@ -1,7 +1,7 @@
 [ConsumerTokens]
-CONSUMER_KEY = ""
-CONSUMER_SECRET = ""
+CONSUMER_KEY = your_token_value_without_quotes
+CONSUMER_SECRET = your_token_value_without_quotes
 
 [AccessTokens]
-ACCESS_TOKEN = ""
-ACCESS_TOKEN_SECRET = ""
+ACCESS_TOKEN = your_token_value_without_quotes
+ACCESS_TOKEN_SECRET = your_token_value_without_quotes
