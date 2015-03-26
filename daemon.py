@@ -2,7 +2,10 @@
 
 __author__ = 'Kryptic Mind'
 
-import daemon
+class TwitterBot():
 
-with daemon.DaemonContext():
-    pass
+    def __init__(self):
+
+    def post(self):
+        pass
+
