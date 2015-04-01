@@ -5,7 +5,9 @@ __author__ = 'Kryptic Mind'
 
 from tweepy import OAuthHandler, API, Stream
 from tweepy.streaming import StreamListener
+import json
 
+TWEETS_IN_BATCH = 10
 
 class TwitterBot():
     def __init__(self, consumer_key=None, consumer_secret=None, access_token=None, access_token_secret=None):
@@ -23,13 +25,24 @@ class TwitterBot():
 
 
 class Listener(StreamListener):
+
     def __init__(self, stream_file):
         self.stream_file = stream_file
+        self.tweets_batch = []
 
     def on_data(self, data):
         self.stream_file.write(data)
-        print data
+        self.tweets_batch.append(data)
+        if len(self.tweets_batch) >= TWEETS_IN_BATCH:
+            self.process_batch(self.tweets_batch)
+            del self.tweets_batch[:]
         return True
+
+    def process_batch(self, batch):
+        print "Process batch, {0} item(s)".format(len(batch))
+        for tweet_json in batch:
+            tweet = json.loads(tweet_json)
+            print tweet["text"]
 
     def on_error(self, status_code):
         print status_code
