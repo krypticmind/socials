@@ -3,8 +3,9 @@
 
 __author__ = 'Kryptic Mind'
 
+import core
+
 from ConfigParser import ConfigParser
-import daemon
 
 config = ConfigParser()
 config.read('config.ini')
@@ -15,5 +16,5 @@ ACCESS_TOKEN = config.get("AccessTokens", "ACCESS_TOKEN")
 ACCESS_TOKEN_SECRET = config.get("AccessTokens", "ACCESS_TOKEN_SECRET")
 
 if __name__ == '__main__':
-    bot = daemon.TwitterBot(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+    bot = core.TwitterBot(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
     bot.stream()
