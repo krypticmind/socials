@@ -3,9 +3,14 @@
 
 __author__ = 'Kryptic Mind'
 
+from ConfigParser import ConfigParser
 from tweepy import OAuthHandler, API, Stream
 from tweepy.streaming import StreamListener
 
+config = ConfigParser()
+config.read('config.ini')
+
+STREAM_LOG = config.get("Logging", "STREAM_LOG")
 
 class TwitterBot():
     def __init__(self, consumer_key=None, consumer_secret=None, access_token=None, access_token_secret=None):
@@ -14,7 +19,7 @@ class TwitterBot():
         self.api = API(auth_handler=self.auth)
 
     def stream(self):
-        with open("stream.log", "w") as stream_file:
+        with open(STREAM_LOG, "w") as stream_file:
             twitterStream = Stream(self.auth, Listener(stream_file))
             twitterStream.filter(track=[u"music", u"музыка"])
 
