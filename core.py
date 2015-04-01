@@ -14,15 +14,20 @@ class TwitterBot():
         self.api = API(auth_handler=self.auth)
 
     def stream(self):
-        twitterStream = Stream(self.auth, Listener())
-        twitterStream.filter(track=[u"music", u"музыка"])
+        with open("stream.log", "w") as stream_file:
+            twitterStream = Stream(self.auth, Listener(stream_file))
+            twitterStream.filter(track=[u"music", u"музыка"])
 
     def post(self, text):
         self.api.update_status(status=text)
 
 
 class Listener(StreamListener):
+    def __init__(self, stream_file):
+        self.stream_file = stream_file
+
     def on_data(self, data):
+        self.stream_file.write(data)
         print data
         return True
 
