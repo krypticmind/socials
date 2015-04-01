@@ -6,6 +6,7 @@ __author__ = 'Kryptic Mind'
 import core
 
 from ConfigParser import ConfigParser
+#from daemon import DaemonContext
 
 config = ConfigParser()
 config.read('config.ini')
