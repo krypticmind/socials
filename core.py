@@ -3,9 +3,10 @@
 
 __author__ = 'Kryptic Mind'
 
+import json
+
 from tweepy import OAuthHandler, API, Stream
 from tweepy.streaming import StreamListener
-import json
 
 TWEETS_IN_BATCH = 10
 
