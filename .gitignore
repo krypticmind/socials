@@ -1,0 +1,6 @@
+config.ini
+.idea/
+bin/
+include/
+lib/
+local/
