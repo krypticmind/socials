@@ -12,8 +12,8 @@ class TwitterBot():
         self.auth.set_access_token(access_token, access_token_secret)
         self.api = API(auth_handler=self.auth)
 
-    def stream(self, stream_file):
-        with open(stream_file, "w") as stream_file:
+    def stream(self, stream_log):
+        with open(stream_log, "w") as stream_file:
             twitterStream = Stream(self.auth, Listener(stream_file))
             twitterStream.filter(track=[u"music", u"музыка"])
 
