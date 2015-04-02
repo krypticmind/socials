@@ -1,6 +1,8 @@
 config.ini
+stream.log
 .idea/
 bin/
 include/
 lib/
 local/
+*.pyc

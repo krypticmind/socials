@@ -6,15 +6,14 @@ __author__ = 'Kryptic Mind'
 from tweepy import OAuthHandler, API, Stream
 from tweepy.streaming import StreamListener
 
-
 class TwitterBot():
     def __init__(self, consumer_key=None, consumer_secret=None, access_token=None, access_token_secret=None):
         self.auth = OAuthHandler(consumer_key, consumer_secret)
         self.auth.set_access_token(access_token, access_token_secret)
         self.api = API(auth_handler=self.auth)
 
-    def stream(self):
-        with open("stream.log", "w") as stream_file:
+    def stream(self, stream_log):
+        with open(stream_log, "w") as stream_file:
             twitterStream = Stream(self.auth, Listener(stream_file))
             twitterStream.filter(track=[u"music", u"музыка"])
 
