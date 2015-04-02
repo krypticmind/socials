@@ -33,17 +33,22 @@ class Listener(StreamListener):
         self.tweets_batch = []
 
     def on_data(self, data):
-        self.stream_file.write(data)
-        self.tweets_batch.append(data)
-        if len(self.tweets_batch) >= TWEETS_IN_BATCH:
-            self.process_batch(self.tweets_batch)
-            del self.tweets_batch[:]
+        if data.strip():
+            self.stream_file.write(data)
+            self.tweets_batch.append(data)
+            if len(self.tweets_batch) >= TWEETS_IN_BATCH:
+                self.process_batch(self.tweets_batch)
+                del self.tweets_batch[:]
         return True
 
     def process_batch(self, batch):
         print "Process batch, {0} item(s)".format(len(batch))
         for tweet_json in batch:
             tweet = json.loads(tweet_json)
+            if "text" not in tweet:
+                print tweet
+                print tweet_json
+                raise RuntimeError("Bad tweet contents")
             print tweet["text"]
 
     def on_error(self, status_code):
