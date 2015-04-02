@@ -5,3 +5,6 @@ CONSUMER_SECRET = your_token_value_without_quotes
 [AccessTokens]
 ACCESS_TOKEN = your_token_value_without_quotes
 ACCESS_TOKEN_SECRET = your_token_value_without_quotes
+
+[Logging]
+STREAM_FILE = stream.log
